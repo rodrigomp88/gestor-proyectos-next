@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
-const ToggleTheme = () => {
+export const ToggleTheme = () => {
   const { systemTheme, theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -16,13 +16,10 @@ const ToggleTheme = () => {
 
     if (currentTheme === "dark") {
       return (
-        <button
-          className="bg-gray-200 dark:bg-gray-600"
-          onClick={() => setTheme("light")}
-        >
+        <button onClick={() => setTheme("light")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-7 w-7"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -36,10 +33,10 @@ const ToggleTheme = () => {
       );
     } else {
       return (
-        <button className="bg-gray-200" onClick={() => setTheme("dark")}>
+        <button onClick={() => setTheme("dark")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-7 w-7"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -51,5 +48,3 @@ const ToggleTheme = () => {
   };
   return <>{renderThemeChanger()}</>;
 };
-
-export default ToggleTheme;

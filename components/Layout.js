@@ -1,16 +1,14 @@
 import Head from "next/head";
-import Navbar from "./Navbar";
+import { NavBar } from "./";
 
-const Layout = ({ title = "Administrador de proyectos", children }) => {
+export const Layout = ({ title = "Administrador de proyectos", children }) => {
   return (
     <>
       <Head>
         <title>{title}</title>
       </Head>
-      <Navbar />
-      <div className="px-10">{children}</div>
+      <NavBar />
+      <div className="px-5 flex flex-col ">{children}</div>
     </>
   );
 };
-
-export default Layout;

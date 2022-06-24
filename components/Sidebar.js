@@ -2,58 +2,54 @@ import { useContext } from "react";
 import Link from "next/link";
 import { UIContext } from "../context";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const { sideMenuOpen, openSideMenu, closeSideMenu } = useContext(UIContext);
 
   return (
     <>
       {sideMenuOpen ? (
         <button
-          className="flex text-4xl items-center cursor-pointer fixed left-1 top-1 z-50"
+          className="flex items-center cursor-pointer fixed right-10 top-6 z-50"
           onClick={closeSideMenu}
         >
-          <i className="fa fa-times-circle" aria-hidden="true">
-            x
-          </i>
+          <h1 className="text-4xl text-red-900 dark:text-red-500 transition-colors">
+            Cerrar
+          </h1>
         </button>
       ) : (
-        <svg
+        <button
           onClick={openSideMenu}
-          className="fixed z-30 items-center cursor-pointer left-1 top-1"
-          fill="#262626"
-          viewBox="0 0 100 80"
-          width="40"
-          height="40"
+          className="fixed z-30 items-center cursor-pointer right-10 top-6"
         >
-          <rect width="100" height="10"></rect>
-          <rect y="30" width="100" height="10"></rect>
-          <rect y="60" width="100" height="10"></rect>
-        </svg>
+          <h1 className="text-4xl text-teal-900 dark:text-teal-500 transition-colors">
+            Menu
+          </h1>
+        </button>
       )}
 
       <div
-        className={`top-0 left-0 w-[75vw] p-10 pl-10 bg-gray-100 dark:bg-gray-900 fixed h-full z-40 ease-in-out duration-300 ${
-          sideMenuOpen ? "translate-y-0" : "translate-y-full"
+        className={`top-0 right-0 w-[60vw] sm:w-[30vw] p-10 pl-10 backdrop-blur-md backdrop-brightness fixed h-full z-40 ease-in-out duration-300 ${
+          sideMenuOpen ? "translate-y-100" : "translate-x-full"
         }`}
       >
-        <div className="mt-20 text-3xl font-semibold text-center leading-loose">
+        <div className="mt-20 text-3xl text-center leading-loose">
           <h3>
             <Link href="/">
               <a onClick={closeSideMenu}>Inicio</a>
             </Link>
           </h3>
           <h3>
-            <Link href="/nosotros">
+            <Link href="/">
               <a onClick={closeSideMenu}>Nosotros</a>
             </Link>
           </h3>
           <h3>
-            <Link href="/servicios">
+            <Link href="/">
               <a onClick={closeSideMenu}>Servicios</a>
             </Link>
           </h3>
           <h3>
-            <Link href="/contacto">
+            <Link href="/">
               <a onClick={closeSideMenu}>Contacto</a>
             </Link>
           </h3>
@@ -62,5 +58,3 @@ const Sidebar = () => {
     </>
   );
 };
-
-export default Sidebar;
