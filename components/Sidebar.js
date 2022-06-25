@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { UIContext } from "../context";
-import { ToggleTheme } from "./Toggle-theme";
+import { ToggleTheme } from "./";
 
 export const Sidebar = () => {
   const { sideMenuOpen, openSideMenu, closeSideMenu } = useContext(UIContext);

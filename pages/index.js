@@ -1,7 +1,4 @@
-import { Layout } from "../components";
-import { Completada } from "../components/Completada";
-import { EnProgreso } from "../components/EnProgreso";
-import { Pendiente } from "../components/Pendiente";
+import { Completada, EnProgreso, Layout, Pendiente } from "../components";
 
 export default function Home() {
   return (

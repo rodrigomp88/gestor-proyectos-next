@@ -1,5 +1,5 @@
 import React from "react";
-import { EntryList } from "./EntryList";
+import { EntryList, NewEntry } from "./";
 
 export const Pendiente = () => {
   return (
@@ -7,6 +7,7 @@ export const Pendiente = () => {
       <h1 className="text-3xl md:text-6xl text-center text-zinc-300 dark:text-zinc-400">
         Pendiente
       </h1>
+      <NewEntry />
       <div className="mt-5 overflow-auto">
         <EntryList status="pending" />
       </div>

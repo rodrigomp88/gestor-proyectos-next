@@ -1,11 +1,11 @@
 export const entriesReducer = (state, action) => {
   switch (action.type) {
-    //   case "UI - Open Sidebar":
-    //     return {
-    //       ...state,
-    //       sideMenuOpen: true,
-    //     };
+    case "[Entry] Add-Entry":
+      return {
+        ...state,
+        entries: [...state.entries, action.payload],
+      };
     default:
-      break;
+      return state;
   }
 };
