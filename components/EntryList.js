@@ -4,8 +4,8 @@ import { EntriesContext, UIContext } from "../context";
 import { EntryCard } from "./";
 
 export const EntryList = ({ status }) => {
-  const { entries } = useContext(EntriesContext);
-  const { isDragging } = useContext(UIContext);
+  const { entries, updateEntry } = useContext(EntriesContext);
+  const { isDragging, endDragging } = useContext(UIContext);
 
   const entriesByStatus = useMemo(
     () => entries.filter((entry) => entry.status === status),
@@ -18,6 +18,11 @@ export const EntryList = ({ status }) => {
 
   const onDropEntry = (e) => {
     const id = e.dataTransfer.getData("text");
+
+    const entry = entries.find((e) => e._id === id);
+    entry.status = status;
+    updateEntry(entry);
+    endDragging();
   };
 
   return (
@@ -26,7 +31,7 @@ export const EntryList = ({ status }) => {
       onDragOver={allowDrop}
       className={`h-[75vh] sm:h-[65vh] m-1 ${
         isDragging ? "opacity-40" : "opacity-100"
-      } transition-all delay-75`}
+      } transition delay-75`}
     >
       {entriesByStatus.map((entry) => (
         <EntryCard key={entry._id} entry={entry} />
