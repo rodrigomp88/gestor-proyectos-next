@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
-import { EntriesContext } from "../context";
+import { EntriesContext, UIContext } from "../context";
 
 export const NewEntry = () => {
-  const [isAdding, setIsAdding] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  // const [touched, setTouched] = useState(false);
   const { addNewEntry } = useContext(EntriesContext);
+  const { isAddingEntry, setIsAddingEntry } = useContext(UIContext);
+
+  const [inputValue, setInputValue] = useState("");
+  // const [isAdding, setIsAdding] = useState(false);
+  // const [touched, setTouched] = useState(false);
 
   const onTextChanges = (e) => {
     setInputValue(e.target.value);
@@ -14,13 +16,13 @@ export const NewEntry = () => {
   const onSave = () => {
     if (inputValue.length === 0) return;
     addNewEntry(inputValue);
-    setIsAdding(false);
+    setIsAddingEntry(false);
     setInputValue("");
   };
 
   return (
     <div className="flex flex-col justify-center py-3">
-      {isAdding ? (
+      {isAddingEntry ? (
         <>
           <textarea
             value={inputValue}
@@ -37,7 +39,7 @@ export const NewEntry = () => {
             </button>
             <button
               className="outline outline-amber-700 rounded-sm px-2 hover:bg-amber-800 text-slate-300 font-bold"
-              onClick={() => setIsAdding(false)}
+              onClick={() => setIsAddingEntry(false)}
             >
               Cancelar
             </button>
@@ -47,7 +49,7 @@ export const NewEntry = () => {
         <>
           <button
             className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 text-slate-300 font-bold"
-            onClick={() => setIsAdding(true)}
+            onClick={() => setIsAddingEntry(true)}
           >
             Agregar nueva tarea
           </button>
