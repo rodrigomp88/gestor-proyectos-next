@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { UIContext } from "../context";
+import { ToggleTheme } from "./Toggle-theme";
 
 export const Sidebar = () => {
   const { sideMenuOpen, openSideMenu, closeSideMenu } = useContext(UIContext);
@@ -8,27 +9,29 @@ export const Sidebar = () => {
   return (
     <>
       {sideMenuOpen ? (
-        <button
-          className="flex items-center cursor-pointer fixed right-10 top-6 z-50"
-          onClick={closeSideMenu}
-        >
-          <h1 className="text-4xl text-red-900 dark:text-red-500 transition-colors">
-            Cerrar
-          </h1>
-        </button>
+        <div className="">
+          <button
+            className="cursor-pointer fixed items-center right-10 top-6 z-50"
+            onClick={closeSideMenu}
+          >
+            <h1 className="text-4xl text-red-900 dark:text-red-500">Cerrar</h1>
+          </button>
+        </div>
       ) : (
-        <button
-          onClick={openSideMenu}
-          className="fixed z-30 items-center cursor-pointer right-10 top-6"
-        >
-          <h1 className="text-4xl text-teal-900 dark:text-teal-500 transition-colors">
-            Menu
-          </h1>
-        </button>
+        <div className="">
+          <ToggleTheme />
+
+          <button
+            onClick={openSideMenu}
+            className="z-30 items-center cursor-pointer fixed right-10 top-6"
+          >
+            <h1 className="text-4xl text-teal-900 dark:text-teal-500">Menu</h1>
+          </button>
+        </div>
       )}
 
       <div
-        className={`top-0 right-0 w-[60vw] sm:w-[30vw] p-10 pl-10 backdrop-blur-md backdrop-brightness fixed h-full z-40 ease-in-out duration-300 ${
+        className={`top-0 right-0 w-[60vw] sm:w-[30vw] p-10 pl-10 backdrop-blur-md fixed h-full z-40 ease-in-out duration-300 ${
           sideMenuOpen ? "translate-y-100" : "translate-x-full"
         }`}
       >

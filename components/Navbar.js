@@ -1,4 +1,4 @@
-import { Sidebar, ToggleTheme } from "./";
+import { Sidebar } from "./";
 
 export const NavBar = () => {
   return (
@@ -8,7 +8,6 @@ export const NavBar = () => {
           ToDo App
         </h1>
         <div className="mt-2 mr-28 md:mr-9">
-          <ToggleTheme />
           <Sidebar />
         </div>
       </div>
