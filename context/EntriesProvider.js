@@ -7,20 +7,21 @@ const Entries_INITIAL_STATE = {
   entries: [
     {
       _id: uuidv4(),
-      description: "lorem imlsun agos tunun catar gulun gatar formik",
+      description:
+        "Pendiente: lorem imlsun agos tunun catar gulun gatar formik",
       status: "pending",
       createdAt: Date.now(),
     },
     {
       _id: uuidv4(),
       description:
-        "la la lorem imlsun agos tunun catar gulun gatar formik caca pele tutu",
-      status: "in-progess",
+        "En-Progreso la la lorem imlsun agos tunun catar gulun gatar formik caca pele tutu",
+      status: "in-progress",
       createdAt: Date.now() - 1000000,
     },
     {
       _id: uuidv4(),
-      description: "jo jo jo lorem imlsun agos tunun catar gulun gatar formik",
+      description: "Terminada lorem imlsun agos tunun catar gulun gatar formik",
       status: "finished",
       createdAt: Date.now() - 100000,
     },
