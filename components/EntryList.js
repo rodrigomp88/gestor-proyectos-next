@@ -18,7 +18,6 @@ export const EntryList = ({ status }) => {
 
   const onDropEntry = (e) => {
     const id = e.dataTransfer.getData("text");
-
     const entry = entries.find((e) => e._id === id);
     entry.status = status;
     updateEntry(entry);
@@ -31,7 +30,7 @@ export const EntryList = ({ status }) => {
       onDragOver={allowDrop}
       className={`h-[75vh] sm:h-[65vh] m-1 ${
         isDragging ? "opacity-40" : "opacity-100"
-      } transition delay-75`}
+      } transition`}
     >
       {entriesByStatus.map((entry) => (
         <EntryCard key={entry._id} entry={entry} />

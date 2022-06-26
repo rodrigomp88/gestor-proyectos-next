@@ -1,4 +1,3 @@
-import React from "react";
 import { EntryList, NewEntry } from "./";
 
 export const Pendiente = () => {

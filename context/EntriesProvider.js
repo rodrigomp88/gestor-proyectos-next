@@ -35,15 +35,15 @@ export const EntriesProvider = ({ children }) => {
     const newEntry = {
       _id: uuidv4(),
       description,
-      createAt: Date.now(),
       status: "pending",
+      createAt: Date.now(),
     };
 
     dispatch({ type: "[Entry] Add-Entry", payload: newEntry });
   };
 
   const updateEntry = (entry) => {
-    dispatch({ type: "[Entry] Entry-Update", payload: entry });
+    dispatch({ type: "[Entry] Entry-Updated", payload: entry });
   };
 
   return (

@@ -21,24 +21,24 @@ export const NewEntry = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center py-3">
+    <div className="flex flex-col justify-center py-1">
       {isAddingEntry ? (
         <>
           <textarea
             value={inputValue}
             onChange={onTextChanges}
-            placeholder="Ingrese un valor"
+            placeholder="Ingresa nueva tarea"
             // onBlur={() => setTouched(true)}
           />
           <div className="flex justify-between pt-2">
             <button
-              className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 text-slate-300 font-bold"
+              className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 font-bold"
               onClick={onSave}
             >
               Guardar
             </button>
             <button
-              className="outline outline-amber-700 rounded-sm px-2 hover:bg-amber-800 text-slate-300 font-bold"
+              className="outline outline-red-700 rounded-sm px-2 hover:bg-red-800 font-bold"
               onClick={() => setIsAddingEntry(false)}
             >
               Cancelar
@@ -48,7 +48,7 @@ export const NewEntry = () => {
       ) : (
         <>
           <button
-            className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 text-slate-300 font-bold"
+            className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 font-bold"
             onClick={() => setIsAddingEntry(true)}
           >
             Agregar nueva tarea
