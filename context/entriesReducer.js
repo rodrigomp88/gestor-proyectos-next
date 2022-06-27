@@ -16,6 +16,11 @@ export const entriesReducer = (state, action) => {
           return entry;
         }),
       };
+    case "[Entry] Refresh-Data":
+      return {
+        ...state,
+        entries: [...action.payload],
+      };
     default:
       return state;
   }

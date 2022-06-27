@@ -43,17 +43,7 @@ export const Sidebar = () => {
           </h3>
           <h3>
             <Link href="/">
-              <a onClick={closeSideMenu}>Nosotros</a>
-            </Link>
-          </h3>
-          <h3>
-            <Link href="/">
-              <a onClick={closeSideMenu}>Servicios</a>
-            </Link>
-          </h3>
-          <h3>
-            <Link href="/">
-              <a onClick={closeSideMenu}>Contacto</a>
+              <a onClick={closeSideMenu}>Proyectos</a>
             </Link>
           </h3>
         </div>

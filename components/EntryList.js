@@ -28,7 +28,7 @@ export const EntryList = ({ status }) => {
     <div
       onDrop={onDropEntry}
       onDragOver={allowDrop}
-      className={`h-[75vh] sm:h-[65vh] m-1 ${
+      className={`h-[70vh] sm:h-[60vh] m-1 ${
         isDragging ? "opacity-40" : "opacity-100"
       } transition`}
     >
