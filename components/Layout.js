@@ -3,7 +3,7 @@ import { NavBar } from "./";
 
 export const Layout = ({ title = "Administrador de proyectos", children }) => {
   return (
-    <div className="min-h-">
+    <div>
       <Head>
         <title>{title}</title>
       </Head>

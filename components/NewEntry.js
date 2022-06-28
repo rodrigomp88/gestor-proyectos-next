@@ -24,25 +24,39 @@ export const NewEntry = () => {
     <div className="flex flex-col justify-center py-1">
       {isAddingEntry ? (
         <>
-          <textarea
-            value={inputValue}
-            onChange={onTextChanges}
-            placeholder="Ingresa nueva tarea"
-            // onBlur={() => setTouched(true)}
-          />
-          <div className="flex justify-between pt-2">
-            <button
-              className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 font-bold"
-              onClick={onSave}
-            >
-              Guardar
-            </button>
-            <button
-              className="outline outline-red-700 rounded-sm px-2 hover:bg-red-800 font-bold"
-              onClick={() => setIsAddingEntry(false)}
-            >
-              Cancelar
-            </button>
+          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 transition duration-700 ease-in-out">
+            <div className="relative w-auto my-6 mx-auto max-w-4xl">
+              <div className="rounded-md shadow-lg relative flex flex-col w-full bg-teal-800 ">
+                <div className="flex items-start justify-between p-5 rounded-t ">
+                  <div className="relative p-6 flex-auto">
+                    <h1 className="text-3xl text-center">
+                      Agregue una nueva tarea
+                    </h1>
+                    <textarea
+                      className="w-full py-5 my-5 rounded-md"
+                      value={inputValue}
+                      onChange={onTextChanges}
+                      placeholder="Ingresa nueva tarea"
+                      // onBlur={() => setTouched(true)}
+                    />
+                    <div className="flex justify-between pt-2">
+                      <button
+                        className="outline outline-teal-700 rounded-sm px-2 hover:bg-teal-800 font-bold"
+                        onClick={onSave}
+                      >
+                        Guardar
+                      </button>
+                      <button
+                        className="outline outline-red-700 rounded-sm px-2 hover:bg-red-800 font-bold"
+                        onClick={() => setIsAddingEntry(false)}
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </>
       ) : (

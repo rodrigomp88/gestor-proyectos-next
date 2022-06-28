@@ -19,7 +19,7 @@ export const ToggleTheme = () => {
         <button onClick={() => setTheme("light")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-7 w-7"
+            className="h-7 w-7 animate-pulse"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -36,7 +36,7 @@ export const ToggleTheme = () => {
         <button onClick={() => setTheme("dark")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-7 w-7"
+            className="h-7 w-7 animate-pulse"
             viewBox="0 0 20 20"
             fill="currentColor"
           >
