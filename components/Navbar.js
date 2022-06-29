@@ -5,12 +5,10 @@ import { Sidebar } from "./";
 export const NavBar = () => {
   return (
     <nav className="sticky py-5 px-10">
-      <div className="container flex justify-between">
+      <div className="container flex justify-between block">
         <Link href="/">
           <a>
-            <h1 className="text-5xl text-gray-500 transition-colors">
-              ToDo-App
-            </h1>
+            <h1 className="text-5xl text-gray-500 animate-pulse">ToDo-App</h1>
           </a>
         </Link>
         <ToggleTheme />
