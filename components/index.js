@@ -8,4 +8,3 @@ export * from "./Completada";
 export * from "./EntryCard";
 export * from "./EntryList";
 export * from "./NewEntry";
-export * from "./Modal";

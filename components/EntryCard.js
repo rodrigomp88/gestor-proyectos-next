@@ -1,8 +1,12 @@
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import { UIContext } from "../context";
+import { dateFunctions } from "../utils";
 
 export const EntryCard = ({ entry }) => {
   const { startDragging, endDragging } = useContext(UIContext);
+
+  const router = useRouter();
   const onDragStart = (e) => {
     e.dataTransfer.setData("text", entry._id);
     startDragging();
@@ -12,8 +16,13 @@ export const EntryCard = ({ entry }) => {
     endDragging();
   };
 
+  const onClick = () => {
+    router.push(`/entries/${entry._id}`);
+  };
+
   return (
     <div
+      onClick={onClick}
       draggable
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
@@ -21,7 +30,7 @@ export const EntryCard = ({ entry }) => {
     >
       <p className="text-md md:text-xl">{entry.description}</p>
       <p className="mt-3 text-right text-xs text-slate-400 dark:text-slate-500">
-        Creada hace 20 min
+        Creada {dateFunctions.getFormatDistanceToNow(entry.createAt)}
       </p>
     </div>
   );

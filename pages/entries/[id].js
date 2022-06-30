@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useRouter } from "next/router";
+import { EntriesContext } from "../../context";
+import { dbEntries } from "../../database";
 import { Layout } from "../../components";
+import { dateFunctions } from "../../utils";
 
 const validStatus = ["pending", "in-progress", "finished"];
 
-const EntryPage = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [status, setStatus] = useState("pending");
+const EntryPage = ({ entry }) => {
+  const [inputValue, setInputValue] = useState(entry.description);
+  const [status, setStatus] = useState(entry.status);
+
+  const router = useRouter();
+
+  const { updateEntry } = useContext(EntriesContext);
 
   const onInputChanged = (event) => {
     setInputValue(event.target.value);
@@ -16,15 +24,21 @@ const EntryPage = () => {
   };
 
   const onSave = () => {
-    console.log({ inputValue, status });
+    if (inputValue.trim().length === 0) return;
+
+    const updatedEntry = {
+      ...entry,
+      status,
+      description: inputValue,
+    };
+    updateEntry(updatedEntry, true);
+    router.push("/");
   };
 
   return (
-    <Layout title="...">
+    <Layout title={inputValue.substring(0, 20) + "..."}>
       <div className="grid h-[80vh] place-items-center">
         <div className="px-10 py-5 w-[45vh] bg-gradient-to-b from-teal-600 shadow-2xl rounded-md">
-          <p className="text-left text-2xl">Entrada: {inputValue}</p>
-          <p className="text-right text-md">Creada hace...</p>
           <div className="flex flex-col justify-items-center mt-5">
             <textarea
               placeholder="Nueva entrada"
@@ -32,6 +46,9 @@ const EntryPage = () => {
               value={inputValue}
               onChange={onInputChanged}
             />
+            <p className="text-right text-md">
+              {dateFunctions.getFormatDistanceToNow(entry.createAt)}
+            </p>
             <div className="flex flex-col mt-2">
               <div>Estado:</div>
               <select
@@ -48,21 +65,44 @@ const EntryPage = () => {
                 ))}
               </select>
             </div>
-            <button
-              disabled={inputValue.length <= 0}
-              onClick={onSave}
-              className="w-full bg-lime-600 hover:bg-lime-700 text-xl semi-bold mt-5 rounded-md"
-            >
-              Guardar
-            </button>
-            <button className="w-full bg-red-600 hover:bg-red-700 text-xl semi-bold mt-5 rounded-md">
-              Borrar Tarea
-            </button>
+            <div className="flex justify-between">
+              <button
+                disabled={inputValue.length <= 0}
+                onClick={onSave}
+                className="px-2 py-1 outline outline-green-700 hover:bg-green-800 font-bold mt-5 rounded-md"
+              >
+                Guardar
+              </button>
+              <button className="px-2 py-1 outline outline-red-700 hover:bg-red-800 font-bold mt-5 rounded-md">
+                Borrar
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </Layout>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const { id } = params;
+
+  const entry = await dbEntries.getEntryById(id);
+
+  if (!entry) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      entry,
+    },
+  };
 };
 
 export default EntryPage;

@@ -29,8 +29,8 @@ export const EntryList = ({ status }) => {
       onDrop={onDropEntry}
       onDragOver={allowDrop}
       className={`h-[70vh] sm:h-[60vh] m-1 ${
-        isDragging ? "opacity-40" : "opacity-100"
-      } transition`}
+        isDragging ? "border-dashed border-2 border-gray-500" : " opacity-100"
+      } `}
     >
       {entriesByStatus.map((entry) => (
         <EntryCard key={entry._id} entry={entry} />

@@ -10,12 +10,12 @@ export const seedData = {
       description:
         "En-Progreso la la lorem imlsun agos tunun catar gulun gatar formik caca pele tutu",
       status: "in-progress",
-      createdAt: Date.now() - 1000000,
+      createdAt: Date.now(),
     },
     {
       description: "Terminada lorem imlsun agos tunun catar gulun gatar formik",
       status: "finished",
-      createdAt: Date.now() - 100000,
+      createdAt: Date.now(),
     },
   ],
 };
