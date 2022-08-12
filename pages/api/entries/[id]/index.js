@@ -2,12 +2,6 @@ import { db } from "../../../../database";
 import { Entry } from "../../../../models";
 
 export default function handler(req, res) {
-  // const { id } = req.query;
-
-  // if (!mongoose.isValidObjectId(id)) {
-  //   return res.status(400).json({ message: "El id no es valido" + id });
-  // }
-
   switch (req.method) {
     case "PUT":
       return updateEntry(req, res);
@@ -61,7 +55,4 @@ const updateEntry = async (req, res) => {
     await db.disconnect();
     res.status(400).json({ message: error.errors.status.message });
   }
-  // entryToUpdate.description = description;
-  // entryToUpdate.status = status;
-  // await entryToUpdate.save();
 };

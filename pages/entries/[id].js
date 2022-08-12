@@ -35,6 +35,10 @@ const EntryPage = ({ entry }) => {
     router.push("/");
   };
 
+  const onDelete = () => {
+    console.log("Agregar borrar");
+  };
+
   return (
     <Layout title={inputValue.substring(0, 20) + "..."}>
       <div className="grid h-[80vh] place-items-center">
@@ -57,11 +61,9 @@ const EntryPage = ({ entry }) => {
                 onChange={onStatusChanged}
               >
                 {validStatus.map((option) => (
-                  <>
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  </>
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
                 ))}
               </select>
             </div>
@@ -73,7 +75,10 @@ const EntryPage = ({ entry }) => {
               >
                 Guardar
               </button>
-              <button className="px-2 py-1 outline outline-red-700 hover:bg-red-800 font-bold mt-5 rounded-md">
+              <button
+                onClick={onDelete}
+                className="px-2 py-1 outline outline-red-700 hover:bg-red-800 font-bold mt-5 rounded-md"
+              >
                 Borrar
               </button>
             </div>
